@@ -105,9 +105,7 @@ func (server *Server) updateAccount(ctx* gin.Context){
 
 	arg := db.UpdateAccountParams{
 		ID: uriReq.ID,
-		Owner: bodyReq.Owner,
 		Balance: bodyReq.Balance,
-		Currency: bodyReq.Currency,
 	}
 
 	account, err := server.store.UpdateAccount(ctx, arg)

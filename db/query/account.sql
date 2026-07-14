@@ -23,9 +23,7 @@ LIMIT $1
 OFFSET $2;
 
 -- name: UpdateAccount :one
-UPDATE accounts SET owner = $2,
-balance = $3,
-currency = $4
+UPDATE accounts SET balance = $2
 WHERE id = $1
 RETURNING *;
 
