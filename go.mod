@@ -1,4 +1,4 @@
-module github.com/07samir07/bank-app
+module github.com/07samir07/simple-bank
 
 go 1.26
 

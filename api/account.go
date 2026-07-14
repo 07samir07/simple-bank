@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"net/http"
 
-	db "github.com/07samir07/bank-app/db/sqlc"
+	db "github.com/07samir07/simple-bank/db/sqlc"
 	"github.com/gin-gonic/gin"
 )
 
