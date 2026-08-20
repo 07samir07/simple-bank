@@ -7,7 +7,8 @@ import (
 	"github.com/google/uuid"
 )
 
-
+//Different errors that can be returned by the token maker
+var ErrInvalidToken = errors.New("token is invalid")
 var ErrExpiredToken = errors.New("token has expired")
 //Payload contains the payload data of the token
 type Payload struct{
