@@ -22,7 +22,8 @@ import (
 )
 
 func TestGetAccountAPI(t *testing.T){
-	account := randomAccount()
+	user, _ := randomUser(t)
+	account := randomAccount(user.Username)
 
 
 	testCases := []struct{
@@ -117,10 +118,10 @@ func TestGetAccountAPI(t *testing.T){
 		
 }
 
-func randomAccount() db.Accounts{
+func randomAccount(owner string) db.Accounts{
 	return db.Accounts{
 		ID: util.RandomInt(1, 1000),
-		Owner: util.RandomOwner(),
+		Owner: owner,
 		Balance: util.RandomMoney(),
 		Currency: util.RandomCurrency(),
 	}
