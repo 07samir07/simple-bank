@@ -330,7 +330,7 @@ func TestListAccountsAPI(t *testing.T) {
 				store.EXPECT().
 					ListAccounts(gomock.Any(), gomock.Any()).
 					Times(1).
-					Return([]db.Account{}, sql.ErrConnDone)
+					Return([]db.Accounts{}, sql.ErrConnDone)
 			},
 			checkResponse: func(recorder *httptest.ResponseRecorder) {
 				require.Equal(t, http.StatusInternalServerError, recorder.Code)
@@ -404,24 +404,24 @@ func TestListAccountsAPI(t *testing.T) {
 	}
 }
 
-func randomAccount(owner string) db.Accounts {
-	return db.Accounts{
-		ID:       util.RandomInt(1, 1000),
-		Owner:    owner,
-		Balance:  util.RandomMoney(),
-		Currency: util.RandomCurrency(),
-	}
-}
+// func randomAccount(owner string) db.Accounts {
+// 	return db.Accounts{
+// 		ID:       util.RandomInt(1, 1000),
+// 		Owner:    owner,
+// 		Balance:  util.RandomMoney(),
+// 		Currency: util.RandomCurrency(),
+// 	}
+// }
 
-func requireBodyMatchAccount(t *testing.T, body *bytes.Buffer, account db.Accounts) {
-	data, err := io.ReadAll(body)
-	require.NoError(t, err)
+// func requireBodyMatchAccount(t *testing.T, body *bytes.Buffer, account db.Accounts) {
+// 	data, err := io.ReadAll(body)
+// 	require.NoError(t, err)
 
-	var gotAccount db.Accounts
-	err = json.Unmarshal(data, &gotAccount)
-	require.NoError(t, err)
-	require.Equal(t, account, gotAccount)
-}
+// 	var gotAccount db.Accounts
+// 	err = json.Unmarshal(data, &gotAccount)
+// 	require.NoError(t, err)
+// 	require.Equal(t, account, gotAccount)
+// }
 
 func requireBodyMatchAccounts(t *testing.T, body *bytes.Buffer, accounts []db.Accounts) {
 	data, err := io.ReadAll(body)
